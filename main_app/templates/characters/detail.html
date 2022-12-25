@@ -19,7 +19,7 @@
 </div>
 </div>
 <div class="col s6">
-    <form method="POST">
+    <form action="{% url 'add_session' character.id %}" method="POST">
         {% csrf_token %}
         {{ session_form.as_p }}
         <input type="submit" class="btn" value="Add Session">
@@ -32,12 +32,20 @@
             {% for session in character.session_set.all %}
               <tr>
                 <td>{{session.date}}</td>
-                <td>{{session.get_session_display}}</td>
+                <td>{{session.session}}</td>
               </tr>
             {% endfor %}
           </tbody>
         </table>
   </div>
 </div>
-
+<script>
+    const dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+      format: 'yyyy-mm-dd',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+</script>
 {% endblock %}

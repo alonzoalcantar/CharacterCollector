@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Character, Item
 from .forms import SessionForm
@@ -58,6 +58,17 @@ def item_detail(request, item_id):
     item = Item.objects.get(id=item_id)
     return render(request, 'items/items_detail.html', { 'item': item })
 
+def add_session(request, character_id):
+  # create a ModelForm instance using the data in request.POST
+  form = SessionForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_session = form.save(commit=False)
+    new_session.character_id = character_id
+    new_session.save()
+  return redirect('detail', character_id=character_id)
 
 # class Character:
 #     def __init__(self, name, race, background, level, style):

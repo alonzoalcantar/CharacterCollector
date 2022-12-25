@@ -33,4 +33,4 @@ class Session(models.Model):
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.get_session_display()} on {self.date}"
+        return f"{self.session} on {self.date}"
