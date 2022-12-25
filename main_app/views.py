@@ -1,6 +1,12 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Character
 # Create your views here.
+
+
+class CharacterCreate(CreateView):
+    model = Character
+    fields = ['name', 'race', 'background', 'level', 'style']
 
 
 def home(request):
