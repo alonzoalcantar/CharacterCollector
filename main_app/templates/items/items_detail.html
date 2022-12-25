@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Item Details</h1>
+
+<div class="card">
+  <div class="card-content">
+
+    <span class="card-title">{{ item.name }}</span>
+    <p>Item Notes: {{ item.notes }}</p>
+  
+    <div class= "card-action">
+        <a href= "{% url 'items_update' item.id%}">Edit Item</a>
+        <a href= "{% url 'items_delete' item.id%}">Delete Item</a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
