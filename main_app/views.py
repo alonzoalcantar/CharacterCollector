@@ -7,6 +7,7 @@ from .models import Character
 class CharacterCreate(CreateView):
     model = Character
     fields = ['name', 'race', 'background', 'level', 'style']
+    success_url = '/characters/'
 
 
 def home(request):
