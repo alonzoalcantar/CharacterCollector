@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Character List</h1>
+
+{% for character in characters %}
+  <div class="card">
+    <div class="card-content">
+
+      <span class="card-title">{{ character.name }}</span>
+      <p>Race: {{ character.race }}</p>
+      <p>Background: {{ character.background }}</p>
+      <p>Level: {{ character.level }}</p>
+      <p>Class: {{ character.style }}</p>
+
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
