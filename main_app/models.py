@@ -8,3 +8,6 @@ class Character(models.Model):
     background = models.CharField(max_length=100)
     level = models.IntegerField()
     style = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
