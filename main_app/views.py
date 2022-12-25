@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Character
 # Create your views here.
 
+
 def home(request):
     return render(request, 'home.html')
 
