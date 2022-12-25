@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Character, Item
+from .forms import SessionForm
 # Create your views here.
 
 
@@ -43,7 +44,10 @@ def characters_index(request):
 
 def character_detail(request, character_id):
     character = Character.objects.get(id=character_id)
-    return render(request, 'characters/detail.html', { 'character': character })
+    session_form = SessionForm()
+    return render(request, 'characters/detail.html', {
+        'character' : character, 'session_form': session_form
+    })
 
 
 def items_index(request):
