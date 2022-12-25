@@ -44,9 +44,12 @@ def characters_index(request):
 
 def character_detail(request, character_id):
     character = Character.objects.get(id=character_id)
+    id_list = character.items.all().values_list('id')
+    items_character_doesnt_have = Item.objects.exclude(id__in=id_list)
     session_form = SessionForm()
     return render(request, 'characters/detail.html', {
-        'character' : character, 'session_form': session_form
+        'character' : character, 'session_form': session_form,
+        'items': items_character_doesnt_have
     })
 
 
@@ -69,6 +72,10 @@ def add_session(request, character_id):
     new_session.character_id = character_id
     new_session.save()
   return redirect('detail', character_id=character_id)
+
+def assoc_item(request, character_id, item_id):
+    Character.objects.get(id=character_id).items.add(item_id)
+    return redirect('detail', character_id=character_id)
 
 # class Character:
 #     def __init__(self, name, race, background, level, style):

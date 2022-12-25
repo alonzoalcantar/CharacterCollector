@@ -17,4 +17,5 @@ urlpatterns = [
     path('items/<int:pk>/update/', views.ItemUpdate.as_view(), name= 'items_update'),
     path('items/<int:pk>/delete/', views.ItemDelete.as_view(), name= 'items_delete'),
     path('characters/<int:character_id>/add_session/', views.add_session, name= 'add_session'),
+    path('characters/<int:character_id>/assoc_item/<int:item_id>/', views.assoc_item, name='assoc_item'),
 ]
