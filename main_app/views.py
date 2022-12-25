@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Character
 # Create your views here.
 
@@ -7,6 +7,14 @@ from .models import Character
 class CharacterCreate(CreateView):
     model = Character
     fields = ['name', 'race', 'background', 'level', 'style']
+    success_url = '/characters/'
+
+class CharacterUpdate(UpdateView):
+    model = Character
+    fields = ['name', 'race', 'background', 'level', 'style']
+
+class CharacterDelete(DeleteView):
+    model = Character
     success_url = '/characters/'
 
 

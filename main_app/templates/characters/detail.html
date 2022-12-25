@@ -12,6 +12,11 @@
     <p>Level: {{ character.level }}</p>
     <p>Class: {{ character.style }}</p>
 
+    <div class= "card-action">
+        <a href= "{% url 'characters_update' character.id%}">Edit Character</a>
+        <a href= "{% url 'characters_delete' character.id%}">Delete Character</a>
+    </div>
+
   </div>
 </div>
 
